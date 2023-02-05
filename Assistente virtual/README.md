@@ -89,3 +89,11 @@ def abrir(mensagem):
 ### Pesquisar
 
     Essa versão pesquisa palavras no google mesmo com separação entre elas.
+    
+```python 
+def pesquisar(mensagem):
+    if ' ' in mensagem:
+        mensagem = mensagem.replace(' ','+')
+    diretorio = f'https://www.google.com/search?q={mensagem}'
+    os.startfile(diretorio)
+```
