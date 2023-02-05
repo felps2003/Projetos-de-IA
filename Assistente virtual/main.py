@@ -6,7 +6,6 @@ while True:
     if count == 1:
         break
     texto = reconhecerFala()
-
     if texto == 'batata frita':
         falar('conectado com sucesso')
         falar('por favor me peça para fazer algo!')
@@ -17,7 +16,7 @@ while True:
                 count = 1
                 break
             elif pedido == 'ria':
-                falar("RA RA RA RA RA RA RA")
+                falar("RA! RA! RA! RA RA! RA! RA!")
             else:
                 falar('por favor me peça para fazer algo!')
             

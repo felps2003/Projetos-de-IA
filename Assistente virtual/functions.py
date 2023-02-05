@@ -14,10 +14,14 @@ def reconhecerFala():
             texto = rec.recognize_google(audio, language="pt-BR")
             return texto
     except:
-        return 'Não consegui te endenter'
+        return falar('Não consegui te entender')
 
 def falar(mensagem):
+    try:
+        os.remove("frase.mp3")
+    except:
+        ...
     frase = gtts.gTTS(mensagem,lang='pt-br',slow=False)
     frase.save('frase.mp3')
     playsound('frase.mp3')
-    os.remove("frase.mp3")
+
