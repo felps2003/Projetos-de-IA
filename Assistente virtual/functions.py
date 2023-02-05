@@ -3,8 +3,9 @@ import gtts
 from playsound import playsound
 import os
 
+rec = sr.Recognizer()
+
 def reconhecerFala():
-    rec = sr.Recognizer()
     #print(sr.Microphone().list_microphone_names())
     try:
         with sr.Microphone(1) as mic:
@@ -24,4 +25,7 @@ def falar(mensagem):
     frase = gtts.gTTS(mensagem,lang='pt-br',slow=False)
     frase.save('frase.mp3')
     playsound('frase.mp3')
+
+
+
 
