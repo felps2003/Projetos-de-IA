@@ -2,37 +2,44 @@ from functions import *
 from pedidos import *
 
 count = 0
+count2 = 0
 while True:
     if count == 1:
         break
-    texto = reconhecerFala("Olá tudo bem ? Meu nome é Samambaia, sou uma assistente virtual e vou te ajudar, então por favor diga a senha!").lower()
-    if texto == 'samambaia':
+    if count2 == 0:
+        texto = reconhecerFala("Olá sou a Samambaia, se precisar da minha ajuda é só dizer o meu nome")
+        count2 +=1
+    else:
+        texto = reconhecerFala("diga?")
+    if texto == None:
+        texto = 'a'
+    texto = texto.lower()
+    if 'samambaia' in texto:
         falar('conectado com sucesso')
         while True:
             try:
                 pedido = reconhecerFala('por favor me peça para fazer algo!').lower()
-                if pedido == 'parar':
+                if 'parar' in pedido or 'sair' in pedido or 'saia' in pedido or 'chega' in pedido:
                     falar("Tudo bem então! tchau!")
                     count = 1
                     break
-                elif pedido == 'ria':
+                elif 'ria' in pedido:
                     falar("RA! RA! RA! RA RA! RA! RA!")
-                elif pedido == 'fale sobre a segunda guerra':
-                    falar('A Segunda Guerra Mundial foi um conflito militar global que durou de 1939 a 1945, envolvendo a maioria das nações do mundo — incluindo todas as grandes potências — organizadas em duas alianças militares opostas: os Aliados e o Eixo')
-                elif pedido == 'abrir arquivo':
+                elif 'abrir' in pedido or 'abra' in pedido or 'abrisse' in pedido and 'arquivo' in pedido: 
                     arquivo = reconhecerFala('Ok vamos procurar o arquivo, qual é o nome?').lower()
                     abrir(arquivo)
-                elif pedido == 'tempo':
+                elif 'tempo' in pedido or 'dia' in pedido or 'horas' in pedido:
                     falar(tempo())
-                elif pedido == 'pesquisar':
+                elif 'pesquisar' in pedido:
                     pesquisa = reconhecerFala('O que você quer pesquisar?')
                     pesquisar(pesquisa)
+                elif 'conversar' in pedido:
+                    conversar()
             except:
-                falar('por favor me peça para fazer algo!')
+                pass
             
-    elif texto == 'parar':
+    elif 'não' in texto:
         falar("Tudo bem então tchau!")
         break
     else:
         falar('Por favor tente novamente!')
-

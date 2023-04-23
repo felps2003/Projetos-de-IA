@@ -5,7 +5,7 @@ import os
 diretorios = {
     'google': 'https://www.google.com/',
     'youtube': 'https://www.youtube.com/',
-    'códigos': 'https://github.com/felps2003?tab=repositories',
+    'repositorio': 'https://github.com/felps2003?tab=repositories',
     'notepad': 'notepad.exe'
 }
 
@@ -32,3 +32,16 @@ def pesquisar(mensagem):
         mensagem = mensagem.replace(' ','+')
     diretorio = f'https://www.google.com/search?q={mensagem}'
     os.startfile(diretorio)
+
+def conversar():
+    falar('Pode perguntar')
+    while True:
+        falou = reconhecerFala('fale')
+        print(falou)
+        if falou == 'parar' or falar == 'chega':
+            break
+        elif falou == None:
+            falar('Você não falou nada')
+        else:
+            samam(falou)
+            

@@ -1,9 +1,15 @@
 import speech_recognition as sr
 import gtts
-from playsound import playsound
+import openai
+import playsound as ps
 import os
 
 rec = sr.Recognizer()
+
+# Criação dos parametros da SAMAM utilizando OPENAI ---------
+openai.api_key = "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"
+model_engine = "text-davinci-003"
+# -----------------------------------------------------------
 
 def reconhecerFala(fala):
     #print(sr.Microphone().list_microphone_names())
@@ -24,8 +30,15 @@ def falar(mensagem):
         ...
     frase = gtts.gTTS(mensagem,lang='pt-br',slow=False)
     frase.save('frase.mp3')
-    playsound('frase.mp3')
+    ps.playsound('frase.mp3')
 
-
-
+def samam(prompt):
+    response = openai.Completion.create(
+        engine=model_engine,
+        prompt=prompt,
+        max_tokens=200,
+        temperature = 0.5,
+    )
+    print(response.choices[0].text)
+    return falar(response.choices[0].text)
 
