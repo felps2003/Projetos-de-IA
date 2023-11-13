@@ -7,7 +7,7 @@ import os
 rec = sr.Recognizer()
 
 # Criação dos parametros da SAMAM utilizando OPENAI ---------
-openai.api_key = "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"
+openai.api_key = ""
 model_engine = "text-davinci-003"
 # -----------------------------------------------------------
 
